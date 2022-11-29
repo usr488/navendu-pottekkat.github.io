@@ -39,22 +39,24 @@ There is a best way to insert the Pi in the case:
 
 I tried inserting the Pi without removing the back cover, and it wasn't inserted correctly. To ensure that you don't damage anything, follow the abovementioned steps.
 
-## Writing the RetroPie Image to the SD Card
+## Writing the RetroPie/ Recalbox Image to the SD Card
 
 The easiest way to download and write the RetroPie image is by using [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
 
 You can download the Raspberry Pi Imager and open it. Connect your SD card to your computer through the adapter (if needed). You are now ready to write the image.
 
-In the Raspberry Pi Imager, select the operating system. Choose "Emulation and game OS", "RetroPie", and the "RetroPie 4.8 (RPI 4/400)" OS.
+In the Raspberry Pi Imager, select the operating system. Choose "Emulation and game OS" and then:
+1. "RetroPie", and the "RetroPie 4.8 (RPI 4/400)" OS or
+2. "Recallbox", and the "Recallbox - Rasperry Pi 4/400" OS. 
 
 {{< figure src="/images/retropie-gpi-case-2-setup/retropie-os.png#center" title="Selecting the RetroPie OS" caption="Make sure to choose the RPI 4/400 version" link="/images/retropie-gpi-case-2-setup/retropie-os.png" target="_blank" class="align-center" >}}
 
-> **Note**: Make sure to choose the one for RPI 4/400 if there is a newer version than 4.8.
+> **Note**: Make sure to choose the one for RPI 4/400 if there is a newer version than 4.8 for RetroPie or 8.1.1 for Recallbox.
 
 Select your SD card from the "Storage" option and click on "Write". It will take some time to download and write the image to your SD card. _Grab a cup of coffee._
 
 ## Installing Display Patch and Safe Shutdown
-
+### RetroPie
 Since RetroPie defaults output to HDMI, we have to install a patch to transfer the display output to the GPIO pins.
 
 Once you have the RetroPie image written to your SD card, you can install this patch.
@@ -66,17 +68,20 @@ Once you have the RetroPie image written to your SD card, you can install this p
 3. If you are on Windows, click on `install_patch.bat`, and it will install the patch.
 4. If you are on Linux or macOS, copy the contents of the `GPi_Case2_patch_retropie/patch_files` folder to the SD card. The files in the `patch_files/overlays` folder should go in the `overlays` folder on the SD card.
 
-Next, you need to configure safe shutdown. To make our lives easier and not type out the command in the GPi CASE, you can create a script.
+Next, you need to configure safe shutdown. To make our lives easier and not type out the command in the GPi CASE 2, you can create a script.
 
 Create a new file on the SD card named `gpi.sh` and add the following content to the file:
 
 ```shell
 wget -O - "https://raw.githubusercontent.com/RetroFlag/GPiCase2-Script/main/retropie_install_gpi2.sh" | sudo bash
 ```
+### Recallbox
+Since version 8.1.1, it is no longer necessary to install a shutdown or display patch for the GPI CASE 2. The necessary configurations are already included in the Image. If the patch is installed anyway, the OS will not boot!
+
 
 ## Configuring WiFi Credentials
 
-Running the `gpi.sh` script will pull some files from the internet. So, you need to set up WiFi on your GPi CASE.
+Running the `gpi.sh` script will pull some files from the internet. So, you need to set up WiFi on your GPi CASE 2.
 
 To do this easily, you can create a new file called `wifikeyfile.txt` and add the following:
 
@@ -86,6 +91,7 @@ psk="your WiFi password"
 ```
 
 > **Note**: If your Raspberry Pi does not have WiFi, you can see [this Reddit post](https://www.reddit.com/r/retroflag_gpi/comments/s7xpee/getting_internet_on_gpi_case_2_with_cm4_without/) for workarounds.
+
 
 ## First Boot
 
