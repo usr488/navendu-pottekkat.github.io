@@ -125,7 +125,7 @@ Now, if you go to the WiFi configuration menu, you will see an option to "Import
 
 You will see that the WiFi is connected, and you can exit the menu.
 
-## Running the Safe Shutdown Install Script
+## Running the Safe Shutdown Install Script (RetroPie only)
 
 In your RetroPie configuration menu, select "File Manager".
 
@@ -139,6 +139,24 @@ That's it! You are all ready to install some retro games and play. You should be
 
 ## Troubleshooting
 
+### Audio Issues
 If you frequently see an error message like "failed to find mixer elements!", [see this fix by Alan Pfahler](https://www.fastoe.com/blog/how-to-fix-failed-to-find-mixer-elements).
 
 If you are trying to configure audio and are running into issues, you can [see this thread on the RetroPie forum](https://retropie.org.uk/forum/topic/28732/kernel-5-10-on-board-audio-disabled-or-not-present).
+
+### Boot Issues
+
+#### Back Screen
+If your GPI CASE 2 device does not boot up and you only get a black screen but no output on your LCD, you can - if you have a GPI CASE 2 incl. dock (the dock is unfortunately not available separately) - try to get an HDMI output (default output ist HDMI). First boot completely without SD card, then you should get a boot screen with the info about the compute module. If no output appears at all, this can have the following possibilities:
+- The compute module is not properly mounted on the board, you should hear a clicking sound on both the rear and the front panel. To be on the safe side, you can also open the case with the 5 screws on the back, unfortunately there are still latches on each side that you have to open carefully so that you can remove the back cover.
+- Make sure your battery is charged
+- The dock does not seem to be a simple USB hub, but is activated via a switch. Make sure you plug the GPI CASE 2 into the dock correctly. If the dock is plugged in, it is active and you will not get any LCD output (even if no HDMI cable is plugged in, but e.g. only power).
+
+If you get an output over HDMI which says: "Error -110 whilst initializing SD card" or if you don't have a dock and the LCD screen just stays black, try this:
+xxxxx
+xxxxxx
+
+
+
+
+
